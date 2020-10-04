@@ -22,15 +22,15 @@
 
 ### 项目架构
 
-![](images/项目架构.png)
+![](images/1.png)
 
 ### 核心技术
 
-![](images/核心技术.png)
+![](images/2.png)
 
 ### 课程安排
 
-![](images/课程安排.png)
+![](images/3.png)
 
 ### 章节安排
 
