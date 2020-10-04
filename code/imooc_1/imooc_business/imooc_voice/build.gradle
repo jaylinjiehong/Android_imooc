@@ -3,16 +3,17 @@ plugins {
 }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion this.rootProject.android.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.example.imooc_voice"
-        minSdkVersion 19
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        applicationId this.rootProject.android.applicationId
+        minSdkVersion this.rootProject.android.minSdkVersion
+        targetSdkVersion this.rootProject.android.targetSdkVersion
+        versionCode this.rootProject.android.versionCode
+        versionName this.rootProject.android.versionName
+        multiDexEnabled this.rootProject.android.multiDexEnable
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner this.rootProject.android.testInstrumentationRunner
     }
 
     buildTypes {
@@ -29,9 +30,9 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.1.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation this.rootProject.depsLibs.appcompat
+    implementation this.rootProject.depsLibs.material
+    testImplementation this.rootProject.depsLibs.junit
+    androidTestImplementation this.rootProject.depsLibs.testJunit
+    androidTestImplementation this.rootProject.depsLibs.espresso
 }

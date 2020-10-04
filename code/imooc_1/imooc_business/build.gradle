@@ -1,8 +1,28 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+//父工程引入全局属性，然后子工程就都可以使用了
+apply from : this.rootProject.file('imooc.gradle')
 buildscript {
+//    为gradle的构建添加仓库
+//    为构建工具引入plugin
     repositories {
         google()
         jcenter()
+//        中央仓库
+        mavenCentral()
+        maven{
+            url 'http://localhost:8081/repository/imooc-releases/'
+            credentials{
+                username 'admin'
+                password 'admin'
+            }
+        }
+        maven{
+            url 'http://localhost:8081/repository/imooc_snapshots/'
+            credentials{
+                username 'admin'
+                password 'admin'
+            }
+        }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.0-rc01"
@@ -13,9 +33,26 @@ buildscript {
 }
 
 allprojects {
+//    为java工程或者kotlin工程引入仓库
+//    这里才是为我们的工程引入maven仓库
     repositories {
         google()
         jcenter()
+        mavenCentral()
+        maven{
+            url 'http://localhost:8081/repository/imooc-releases/'
+            credentials{
+                username 'admin'
+                password 'admin'
+            }
+        }
+        maven{
+            url 'http://localhost:8081/repository/imooc_snapshots/'
+            credentials{
+                username 'admin'
+                password 'admin'
+            }
+        }
     }
 }
 

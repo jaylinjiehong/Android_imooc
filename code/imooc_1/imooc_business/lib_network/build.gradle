@@ -1,18 +1,21 @@
 plugins {
     id 'com.android.library'
+    id 'maven'
 }
-
+def pomName = this.getName()
+def pomVersion = '1.0.0-SNAPSHOT'
+def pomDescription ='the network library for all projects'
 android {
-    compileSdkVersion 28
+    compileSdkVersion this.rootProject.android.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion this.rootProject.android.minSdkVersion
+        targetSdkVersion this.rootProject.android.targetSdkVersion
+        versionCode this.rootProject.android.versionCode
+        versionName this.rootProject.android.versionName
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
+        testInstrumentationRunner this.rootProject.android.testInstrumentationRunner
+        consumerProguardFiles this.rootProject.android.consumerProguardFiles
     }
 
     buildTypes {
@@ -29,9 +32,27 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.1.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation this.rootProject.depsLibs.appcompat
+    implementation this.rootProject.depsLibs.material
+    testImplementation this.rootProject.depsLibs.junit
+    androidTestImplementation this.rootProject.depsLibs.testJunit
+    androidTestImplementation this.rootProject.depsLibs.espresso
+}
+uploadArchives{
+    repositories {
+        mavenDeployer{
+            repository(url:NEXUS_REPOSITORY_URL){
+                authentication(userName:NEXUS_USERNAME,
+                        password: NEXUS_PASSWORD)
+            }
+            pom.project{
+                name pomName
+                version pomVersion
+                description pomDescription
+                artifactId pomVersion
+                groupId POM_GROUPID
+                packaging POM_PACKAGING
+            }
+        }
+    }
 }
