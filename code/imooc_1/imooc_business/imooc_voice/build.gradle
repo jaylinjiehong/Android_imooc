@@ -35,4 +35,7 @@ dependencies {
     testImplementation this.rootProject.depsLibs.junit
     androidTestImplementation this.rootProject.depsLibs.testJunit
     androidTestImplementation this.rootProject.depsLibs.espresso
+    implementation 'com.github.hackware1993:MagicIndicator:1.7.0' // for androidx
+    //基础UI库
+    implementation project(':lib_common_ui')
 }
